@@ -10,6 +10,8 @@ class ChatModel {
   String type;
   String? url;
   String? xid;
+  bool? edited;
+  int? editedAt;
 
   ChatModel({
     required this.createdAt,
@@ -20,6 +22,8 @@ class ChatModel {
     required this.type,
     this.url,
     this.xid,
+    this.edited,
+    this.editedAt,
   });
 
   ChatModel copyWith({
@@ -31,6 +35,8 @@ class ChatModel {
     String? type,
     String? url,
     String? xid,
+    bool? edited,
+    int? editedAt,
   }) {
     return ChatModel(
       createdAt: createdAt ?? this.createdAt,
@@ -41,6 +47,8 @@ class ChatModel {
       type: type ?? this.type,
       url: url ?? this.url,
       xid: xid ?? this.xid,
+      edited: edited ?? this.edited,
+      editedAt: editedAt ?? this.editedAt,
     );
   }
 
@@ -54,6 +62,8 @@ class ChatModel {
       'type': type,
       'url': url,
       'xid': xid,
+      'edited': edited,
+      'editedAt': editedAt,
     };
   }
 
@@ -67,6 +77,8 @@ class ChatModel {
       type: map['type'] as String,
       url: map['url'] != null ? map['url'] as String : null,
       xid: map['xid'] != null ? map['xid'] as String : null,
+      edited: map['edited'] != null ? map['edited'] as bool : null,
+      editedAt: map['editedAt'] != null ? map['editedAt'] as int : null,
     );
   }
 
@@ -77,7 +89,7 @@ class ChatModel {
 
   @override
   String toString() {
-    return 'ChatModel(createdAt: $createdAt, id: $id, msg: $msg, senderUid: $senderUid, serverId: $serverId, type: $type, url: $url, xid: $xid)';
+    return 'ChatModel(createdAt: $createdAt, id: $id, msg: $msg, senderUid: $senderUid, serverId: $serverId, type: $type, url: $url, xid: $xid, edited: $edited, editedAt: $editedAt)';
   }
 
   @override
@@ -91,7 +103,9 @@ class ChatModel {
         other.serverId == serverId &&
         other.type == type &&
         other.url == url &&
-        other.xid == xid;
+        other.xid == xid &&
+        other.edited == edited &&
+        other.editedAt == editedAt;
   }
 
   @override
@@ -103,6 +117,8 @@ class ChatModel {
         serverId.hashCode ^
         type.hashCode ^
         url.hashCode ^
-        xid.hashCode;
+        xid.hashCode ^
+        edited.hashCode ^
+        editedAt.hashCode;
   }
 }

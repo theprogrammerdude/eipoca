@@ -135,7 +135,7 @@ class _SearchState extends State<Search> {
                     controller: _search,
                     onChanged: (p0) => lookupUsers(),
                   ),
-          ),
+          ).pOnly(bottom: 10),
           widget.type == 1
               ? Expanded(
                   child: ListView.builder(
@@ -146,7 +146,8 @@ class _SearchState extends State<Search> {
                         onTap: () => showOptions(s[index]),
                         leading: s[index].serverPhotoURL != ''
                             ? CachedNetworkImage(
-                                imageUrl: s[index].serverPhotoURL!,
+                                imageUrl:
+                                    s[index].serverPhotoURL!.toDecodedBase64,
                               )
                             : const CircleAvatar(
                                 child: Icon(Icons.tag),
@@ -181,9 +182,14 @@ class _SearchState extends State<Search> {
                           }
                         },
                         leading: u[index].pfpUrl != ''
-                            ? CachedNetworkImage(
-                                imageUrl:
-                                    u[index].pfpUrl.toString().toDecodedBase64,
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: CachedNetworkImage(
+                                  imageUrl: u[index]
+                                      .pfpUrl
+                                      .toString()
+                                      .toDecodedBase64,
+                                ),
                               )
                             : const CircleAvatar(
                                 child: Icon(Icons.person),

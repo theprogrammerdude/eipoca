@@ -65,6 +65,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  avatars:
+    dependency: "direct main"
+    description:
+      name: avatars
+      sha256: c7860372742c627a297e7bacca8193306a0bc6bd766cdf045f5bfca1e0b68df2
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.2"
   boolean_selector:
     dependency: transitive
     description:
@@ -608,6 +616,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  iconsax:
+    dependency: "direct main"
+    description:
+      name: iconsax
+      sha256: fb0144c61f41f3f8a385fadc27783ea9f5359670be885ed7f35cef32565d5228
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.8"
   image:
     dependency: transitive
     description:
@@ -712,14 +728,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.8.1"
-  like_button:
-    dependency: "direct main"
-    description:
-      name: like_button
-      sha256: "08e6a45b78888412df5d351786c550205ad3a677e72a0820d5bbc0b063c8a463"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.5"
   lints:
     dependency: transitive
     description:
@@ -728,6 +736,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  localstore:
+    dependency: "direct main"
+    description:
+      name: localstore
+      sha256: "42a0afb7696cfab1b4bd7d08355b4ee01f975fd364553b28d51496eccaf11cce"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.5"
   matcher:
     dependency: transitive
     description:
@@ -817,7 +833,7 @@ packages:
     source: hosted
     version: "2.0.9"
   path:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path
       sha256: "8829d8a55c13fc0e37127c29fedf290c102f4e40ae94ada574091fe0ff96c917"
@@ -992,6 +1008,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.3.2"
+  select_dialog:
+    dependency: "direct main"
+    description:
+      name: select_dialog
+      sha256: "9c378f4b7d35a41ebf0fd3ad5b021da04e646bbddd1293219da103dd60fcfe0d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
+  share_plus:
+    dependency: "direct main"
+    description:
+      name: share_plus
+      sha256: "6cec740fa0943a826951223e76218df002804adb588235a8910dc3d6b0654e11"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.1.0"
+  share_plus_platform_interface:
+    dependency: transitive
+    description:
+      name: share_plus_platform_interface
+      sha256: "357412af4178d8e11d14f41723f80f12caea54cf0d5cd29af9dcdab85d58aea7"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.0"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -1062,7 +1102,7 @@ packages:
     source: hosted
     version: "1.10.0"
   sqflite:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: sqflite
       sha256: "591f1602816e9c31377d5f008c2d9ef7b8aca8941c3f89cc5fd9d84da0c38a9a"
@@ -1109,14 +1149,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
-  swipe_to:
-    dependency: "direct main"
-    description:
-      name: swipe_to
-      sha256: "6274e148a02b32dfa8ae8634c9aa6196bf5bc2d88653650abd11d2eb52fc5e29"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.2"
   synchronized:
     dependency: transitive
     description:
@@ -1141,6 +1173,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.0"
+  timeago:
+    dependency: "direct main"
+    description:
+      name: timeago
+      sha256: "4addcda362e51f23cf7ae2357fccd053f29d59b4ddd17fb07fc3e7febb47a456"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.5.0"
   typed_data:
     dependency: transitive
     description:

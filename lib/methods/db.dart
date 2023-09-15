@@ -106,9 +106,11 @@ class Db {
       'createdAt': DateTime.now().millisecondsSinceEpoch,
     };
 
-    _db
-        .doc('chats/${d['chatId']}')
-        .update({'lastMsg': d['msg'], 'lastMsgType': d['type']});
+    _db.doc('chats/${d['chatId']}').update({
+      'lastMsg': d['msg'],
+      'lastMsgType': d['type'],
+      'lastMsgCreatedAt': DateTime.now().millisecondsSinceEpoch,
+    });
 
     return _db
         .doc('chats/${d['chatId']}')
@@ -181,6 +183,10 @@ class Db {
 
   Future<void> deleteChat(String serverId, String id) {
     return _db.doc('servers/$serverId').collection('chats').doc(id).delete();
+  }
+
+  Future<void> deleteDM(String chatId, String id) {
+    return _db.doc('chats/$chatId').collection('msgs').doc(id).delete();
   }
 
   Stream<QuerySnapshot<Map<String, dynamic>>> searchServers(String s) {
@@ -320,6 +326,36 @@ class Db {
   Future<void> changeServerBio(Map<String, dynamic> data) async {
     return await _db.doc('servers/${data['id']}').update({
       'bio': data['bio'],
+    });
+  }
+
+  Future<void> editMessage(Map<String, dynamic> data) async {
+    _db.doc('chats/${data['chatId']}').update({
+      'lastMsg': data['msg'],
+      'edited': true,
+      'lastMsgEditedAt': DateTime.now().millisecondsSinceEpoch,
+    });
+
+    return await _db
+        .doc('chats/${data['chatId']}')
+        .collection('msgs')
+        .doc(data['id'])
+        .update({
+      'msg': data['msg'],
+      'edited': true,
+      'editedAt': DateTime.now().millisecondsSinceEpoch,
+    });
+  }
+
+  Future<void> editServerMessage(Map<String, dynamic> data) async {
+    return await _db
+        .doc('servers/${data['serverId']}')
+        .collection('chats')
+        .doc(data['id'])
+        .update({
+      'msg': data['msg'],
+      'edited': true,
+      'editedAt': DateTime.now().millisecondsSinceEpoch,
     });
   }
 }

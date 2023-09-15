@@ -68,32 +68,37 @@ class _ServerFeedState extends State<ServerFeed> {
           ),
         ],
       ),
-      body: GridView.custom(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: SliverQuiltedGridDelegate(
-          crossAxisCount: 4,
-          mainAxisSpacing: 4,
-          crossAxisSpacing: 4,
-          repeatPattern: QuiltedGridRepeatPattern.inverted,
-          pattern: const [
-            QuiltedGridTile(2, 2),
-            QuiltedGridTile(1, 1),
-            QuiltedGridTile(1, 1),
-            QuiltedGridTile(1, 2),
-          ],
-        ),
-        childrenDelegate: SliverChildBuilderDelegate(
-          (context, index) {
-            var post = posts[index];
+      body: posts.isNotEmpty
+          ? GridView.custom(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: SliverQuiltedGridDelegate(
+                crossAxisCount: 4,
+                mainAxisSpacing: 4,
+                crossAxisSpacing: 4,
+                repeatPattern: QuiltedGridRepeatPattern.inverted,
+                pattern: const [
+                  QuiltedGridTile(2, 2),
+                  QuiltedGridTile(1, 1),
+                  QuiltedGridTile(1, 1),
+                  QuiltedGridTile(1, 2),
+                ],
+              ),
+              childrenDelegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  var post = posts[index];
 
-            return PostWidget(
-              post: post,
-            );
-          },
-          childCount: posts.length,
-        ),
-      ).p12(),
+                  return PostWidget(
+                    post: post,
+                  );
+                },
+                childCount: posts.length,
+              ),
+            ).p12()
+          : Center(
+              child:
+                  'No Posts in this server yet'.text.headline6(context).make(),
+            ),
     );
   }
 }

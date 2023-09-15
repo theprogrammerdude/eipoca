@@ -1,3 +1,4 @@
+import 'package:avatars/avatars.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eipoca/methods/db.dart';
 import 'package:eipoca/methods/local.dart';
@@ -57,8 +58,9 @@ class _ServerListState extends State<ServerList> {
                         width: 30,
                         fit: BoxFit.cover,
                       )
-                    : const CircleAvatar(
-                        child: Icon(Icons.tag),
+                    : Avatar(
+                        name: s[index].name.toUpperCase(),
+                        shape: AvatarShape.circle(24),
                       ),
                 title: s[index].name.text.bold.capitalize.make(),
               );

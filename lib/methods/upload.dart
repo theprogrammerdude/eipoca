@@ -30,8 +30,27 @@ class Upload {
     };
   }
 
+  Future<Map<String, String>> sendImgToChat(String chatId, File file) async {
+    var xid = Xid();
+
+    Reference ref = _firebaseStorage.ref().child('$chatId/${xid.toString()}');
+    UploadTask task = ref.putFile(file);
+
+    String url = await (await task).ref.getDownloadURL();
+
+    return {
+      'url': url,
+      'xid': xid.toString(),
+    };
+  }
+
   Future<void> deleteImgFromServerChat(String serverId, String xid) {
     Reference ref = _firebaseStorage.ref().child('$serverId/${xid.toString()}');
+    return ref.delete();
+  }
+
+  Future<void> deleteImgFromChat(String chatId, String xid) {
+    Reference ref = _firebaseStorage.ref().child('$chatId/${xid.toString()}');
     return ref.delete();
   }
 

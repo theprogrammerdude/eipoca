@@ -6,20 +6,26 @@ class DmModel {
   String id;
   String msg;
   String senderUid;
+  String receiverUid;
   String chatId;
   String type;
   String? url;
   String? xid;
+  bool? edited;
+  int? editedAt;
 
   DmModel({
     required this.createdAt,
     required this.id,
     required this.msg,
     required this.senderUid,
+    required this.receiverUid,
     required this.chatId,
     required this.type,
     this.url,
     this.xid,
+    this.edited,
+    this.editedAt,
   });
 
   DmModel copyWith({
@@ -27,20 +33,26 @@ class DmModel {
     String? id,
     String? msg,
     String? senderUid,
+    String? receiverUid,
     String? chatId,
     String? type,
     String? url,
     String? xid,
+    bool? edited,
+    int? editedAt,
   }) {
     return DmModel(
       createdAt: createdAt ?? this.createdAt,
       id: id ?? this.id,
       msg: msg ?? this.msg,
       senderUid: senderUid ?? this.senderUid,
+      receiverUid: receiverUid ?? this.receiverUid,
       chatId: chatId ?? this.chatId,
       type: type ?? this.type,
       url: url ?? this.url,
       xid: xid ?? this.xid,
+      edited: edited ?? this.edited,
+      editedAt: editedAt ?? this.editedAt,
     );
   }
 
@@ -50,10 +62,13 @@ class DmModel {
       'id': id,
       'msg': msg,
       'senderUid': senderUid,
+      'receiverUid': receiverUid,
       'chatId': chatId,
       'type': type,
       'url': url,
       'xid': xid,
+      'edited': edited,
+      'editedAt': editedAt,
     };
   }
 
@@ -63,10 +78,13 @@ class DmModel {
       id: map['id'] as String,
       msg: map['msg'] as String,
       senderUid: map['senderUid'] as String,
+      receiverUid: map['receiverUid'] as String,
       chatId: map['chatId'] as String,
       type: map['type'] as String,
       url: map['url'] != null ? map['url'] as String : null,
       xid: map['xid'] != null ? map['xid'] as String : null,
+      edited: map['edited'] != null ? map['edited'] as bool : null,
+      editedAt: map['editedAt'] != null ? map['editedAt'] as int : null,
     );
   }
 
@@ -77,7 +95,7 @@ class DmModel {
 
   @override
   String toString() {
-    return 'DmModel(createdAt: $createdAt, id: $id, msg: $msg, senderUid: $senderUid, chatId: $chatId, type: $type, url: $url, xid: $xid)';
+    return 'DmModel(createdAt: $createdAt, id: $id, msg: $msg, senderUid: $senderUid, receiverUid: $receiverUid, chatId: $chatId, type: $type, url: $url, xid: $xid, edited: $edited, editedAt: $editedAt)';
   }
 
   @override
@@ -88,10 +106,13 @@ class DmModel {
         other.id == id &&
         other.msg == msg &&
         other.senderUid == senderUid &&
+        other.receiverUid == receiverUid &&
         other.chatId == chatId &&
         other.type == type &&
         other.url == url &&
-        other.xid == xid;
+        other.xid == xid &&
+        other.edited == edited &&
+        other.editedAt == editedAt;
   }
 
   @override
@@ -100,9 +121,12 @@ class DmModel {
         id.hashCode ^
         msg.hashCode ^
         senderUid.hashCode ^
+        receiverUid.hashCode ^
         chatId.hashCode ^
         type.hashCode ^
         url.hashCode ^
-        xid.hashCode;
+        xid.hashCode ^
+        edited.hashCode ^
+        editedAt.hashCode;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:eipoca/firebase_options.dart';
 import 'package:eipoca/methods/local.dart';
+import 'package:eipoca/methods/messaging.dart';
 import 'package:eipoca/pages/home.dart';
 import 'package:eipoca/pages/no_internet.dart';
 import 'package:eipoca/pages/welcome.dart';
@@ -25,15 +26,19 @@ void main() async {
   );
   await dotenv.load(fileName: ".env");
   await GetStorage.init();
+
   await FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
 
+  _messaging.requestPermission;
+
   runApp(const MyApp());
 }
 
 final Local _local = Local();
+final Messaging _messaging = Messaging();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

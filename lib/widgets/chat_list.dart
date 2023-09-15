@@ -1,5 +1,7 @@
+import 'package:avatars/avatars.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:eipoca/methods/db.dart';
+import 'package:eipoca/methods/local_storage.dart';
 import 'package:eipoca/models/user_model.dart';
 import 'package:eipoca/modules/cipher.dart';
 import 'package:eipoca/pages/chat.dart';
@@ -8,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:velocity_x/velocity_x.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class ChatList extends StatefulWidget {
   const ChatList({super.key});
@@ -19,10 +22,25 @@ class ChatList extends StatefulWidget {
 class _ChatListState extends State<ChatList> {
   final Db _db = Db();
   final Cipher _cipher = Cipher();
+  final LocalStorage _localStorage = LocalStorage();
 
-  @override
-  void initState() {
-    super.initState();
+  goToChat(UserModel u, String chatId) async {
+    Map<String, dynamic>? r = await _localStorage.getChat('sdljfbkjsdbf');
+
+    if (r == null) {
+      Map<String, dynamic> d = {
+        'receiverUid': u.uid,
+        'chatId': chatId,
+        'receiverFcmToken': u.fcmToken
+      };
+
+      _localStorage.addChatToLocal(d);
+    }
+
+    Get.to(() => Chat(
+          receiverUid: u.uid,
+          chatId: chatId,
+        ));
   }
 
   @override
@@ -31,6 +49,7 @@ class _ChatListState extends State<ChatList> {
 
     return user.chats.isNotEmpty
         ? ListView.builder(
+            shrinkWrap: true,
             itemCount: user.chats.length,
             itemBuilder: (context, index) {
               return StreamBuilder(
@@ -49,12 +68,7 @@ class _ChatListState extends State<ChatList> {
                         UserModel u = UserModel.fromMap(d);
 
                         return ListTile(
-                          onTap: () {
-                            Get.to(() => Chat(
-                                  receiverUid: u.uid,
-                                  chatId: user.chats[index],
-                                ));
-                          },
+                          onTap: () => goToChat(u, user.chats[index]),
                           leading: u.pfpUrl != ''
                               ? CachedNetworkImage(
                                   imageUrl: u.pfpUrl!.toDecodedBase64,
@@ -62,13 +76,33 @@ class _ChatListState extends State<ChatList> {
                                   width: 30,
                                   fit: BoxFit.cover,
                                 )
-                              : const CircleAvatar(
-                                  child: Icon(Icons.person),
+                              : Avatar(
+                                  name: u.username,
+                                  shape: AvatarShape.circle(24),
                                 ),
                           title: u.username.text.bold.make(),
-                          subtitle: data['lastMsgType'] == 'text'
-                              ? _cipher.decryptData(data['lastMsg']).text.make()
-                              : const Icon(Icons.image),
+                          subtitle: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              data['lastMsgType'] == 'text'
+                                  ? _cipher
+                                      .decryptData(data['lastMsg'])
+                                      .text
+                                      .make()
+                                  : const Icon(Icons.image).objectCenterLeft(),
+                              data['lastMsgCreatedAt'] != null
+                                  ? timeago
+                                      .format(
+                                        DateTime.fromMillisecondsSinceEpoch(
+                                          data['lastMsgCreatedAt'],
+                                        ),
+                                      )
+                                      .text
+                                      .size(6)
+                                      .make()
+                                  : const SizedBox(width: 0),
+                            ],
+                          ),
                         );
                       },
                     );

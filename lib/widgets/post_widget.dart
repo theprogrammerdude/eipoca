@@ -138,7 +138,9 @@ class PostWidgetState extends State<PostWidget> {
         'postId': widget.post.id,
       };
 
-      _db.addCommentToPost(data);
+      _db.addCommentToPost(data).then((value) {
+        _comment.clear();
+      });
     }
   }
 
