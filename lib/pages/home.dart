@@ -1,6 +1,7 @@
 import 'package:eipoca/methods/db.dart';
 import 'package:eipoca/methods/local.dart';
 import 'package:eipoca/pages/create_server.dart';
+import 'package:eipoca/pages/create_story.dart';
 import 'package:eipoca/pages/profile.dart';
 import 'package:eipoca/pages/search.dart';
 import 'package:eipoca/providers/user_provider.dart';
@@ -70,7 +71,9 @@ class _HomeState extends State<Home> {
               child: const Icon(Icons.create_new_folder_rounded),
             )
           : FloatingActionButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.to(() => const CreateStory());
+              },
               child: const Icon(Icons.add),
             ),
       bottomNavigationBar: SalomonBottomBar(

@@ -52,7 +52,7 @@ class _ServerFeedState extends State<ServerFeed> {
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
+          FloatingActionButton.small(
             heroTag: 'create_post',
             onPressed: () {
               Get.to(() => CreatePost(serverId: widget.id));

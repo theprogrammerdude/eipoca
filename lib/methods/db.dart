@@ -358,4 +358,11 @@ class Db {
       'editedAt': DateTime.now().millisecondsSinceEpoch,
     });
   }
+
+  Future<void> addStory(Map<String, dynamic> data) async {
+    return await _db.doc('stories/${data['id']}').set({
+      ...data,
+      'createdAt': DateTime.now().millisecondsSinceEpoch,
+    });
+  }
 }

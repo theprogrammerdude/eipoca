@@ -5,6 +5,7 @@ import 'dart:typed_data';
 
 import 'package:eipoca/modules/cipher.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
@@ -55,5 +56,15 @@ class Img {
 
     XFile xf = XFile(f.path);
     return await Share.shareXFiles([xf]);
+  }
+
+  Future<File> compressAndGetFile(File file, String targetPath) async {
+    var result = await FlutterImageCompress.compressAndGetFile(
+      file.absolute.path,
+      targetPath,
+      quality: 60,
+    );
+
+    return File(result!.path);
   }
 }

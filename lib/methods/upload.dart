@@ -81,4 +81,15 @@ class Upload {
       'xid': xid.toString(),
     };
   }
+
+  Future<String> uploadStory(Map<String, dynamic> data, File file) async {
+    Reference ref = _firebaseStorage.ref().child(
+          '${data['uid']}/stories/${data['id']}',
+        );
+    UploadTask task = ref.putFile(file);
+
+    String url = await (await task).ref.getDownloadURL();
+
+    return url;
+  }
 }
