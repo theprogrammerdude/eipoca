@@ -60,7 +60,7 @@ class _ServerListState extends State<ServerList> {
                       )
                     : Avatar(
                         name: s[index].name.toUpperCase(),
-                        shape: AvatarShape.circle(24),
+                        shape: AvatarShape.circle(20),
                       ),
                 title: s[index].name.text.bold.capitalize.make(),
               );

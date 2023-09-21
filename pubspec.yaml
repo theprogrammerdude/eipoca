@@ -9,6 +9,7 @@ environment:
   sdk: ">=3.0.5 <4.0.0"
 
 dependencies:
+  advstory: ^0.2.1
   animated_splash_screen: ^1.3.0
   any_link_preview: ^3.0.1
   avatars: ^3.0.2
@@ -54,6 +55,7 @@ dependencies:
   share_plus: ^7.1.0
   shared_preferences: ^2.2.0
   sqflite: ^2.3.0
+  story_view: ^0.15.0
   timeago: ^3.5.0
   url_launcher: ^6.1.12
   uuid: ^3.0.7

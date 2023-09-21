@@ -365,4 +365,8 @@ class Db {
       'createdAt': DateTime.now().millisecondsSinceEpoch,
     });
   }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> getAllStories() {
+    return _db.collection('stories').snapshots();
+  }
 }

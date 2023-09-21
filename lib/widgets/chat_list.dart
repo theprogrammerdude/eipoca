@@ -70,15 +70,18 @@ class _ChatListState extends State<ChatList> {
                         return ListTile(
                           onTap: () => goToChat(u, user.chats[index]),
                           leading: u.pfpUrl != ''
-                              ? CachedNetworkImage(
-                                  imageUrl: u.pfpUrl!.toDecodedBase64,
-                                  height: 30,
-                                  width: 30,
-                                  fit: BoxFit.cover,
+                              ? ClipRRect(
+                                  borderRadius: BorderRadius.circular(1000000),
+                                  child: CachedNetworkImage(
+                                    imageUrl: u.pfpUrl!.toDecodedBase64,
+                                    height: 30,
+                                    width: 30,
+                                    fit: BoxFit.cover,
+                                  ),
                                 )
                               : Avatar(
                                   name: u.username,
-                                  shape: AvatarShape.circle(24),
+                                  shape: AvatarShape.circle(20),
                                 ),
                           title: u.username.text.bold.make(),
                           subtitle: Row(

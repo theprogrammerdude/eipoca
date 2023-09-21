@@ -7,6 +7,7 @@ import 'package:eipoca/pages/no_internet.dart';
 import 'package:eipoca/pages/welcome.dart';
 import 'package:eipoca/providers/dm_provider.dart';
 import 'package:eipoca/providers/server_provider.dart';
+import 'package:eipoca/providers/story_provider.dart';
 import 'package:eipoca/providers/user_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flex_color_scheme/flex_color_scheme.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => ServerProvider()),
         ChangeNotifierProvider(create: (_) => DmProvider()),
+        ChangeNotifierProvider(create: (_) => StoryProvider()),
       ],
       builder: (context, child) {
         return StreamBuilder<ConnectivityResult>(

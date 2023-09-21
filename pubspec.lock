@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.5"
+  advstory:
+    dependency: "direct main"
+    description:
+      name: advstory
+      sha256: "9aee232098f001117494f3fdb0ea5c8a8f344e11282519ee4e867517ae9dd045"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.1"
   align_positioned:
     dependency: transitive
     description:
@@ -1068,10 +1076,10 @@ packages:
     dependency: transitive
     description:
       name: rxdart
-      sha256: "2ef8b4e91cb3b55d155e0e34eeae0ac7107974e451495c955ac04ddee8cc21fd"
+      sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"
       url: "https://pub.dev"
     source: hosted
-    version: "0.26.0"
+    version: "0.27.7"
   salomon_bottom_bar:
     dependency: "direct main"
     description:
@@ -1168,6 +1176,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.0"
+  shimmer:
+    dependency: transitive
+    description:
+      name: shimmer
+      sha256: "1f1009b5845a1f88f1c5630212279540486f97409e9fc3f63883e71070d107bf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -1205,6 +1221,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  story_view:
+    dependency: "direct main"
+    description:
+      name: story_view
+      sha256: "792fb10fb8b3e72e6bbbc5c94bc6ff6399a752237dd2afb1fcb97392814797b9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.15.0"
   stream_channel:
     dependency: transitive
     description:
